@@ -3,7 +3,7 @@ const db= require("./config/db")
 const express = require('express');
 const cors = require('cors');
 const path = require("path");
-
+db();
 
 const userRoute= require('./routes/userRoutes')
 
@@ -12,7 +12,7 @@ dotenv.config({ path: "./.env" });
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use(express.json());  
 app.use(cors());
-db();
+
 app.use("/user",userRoute);
 
 app.listen(process.env.PORT, () => {
